@@ -41,6 +41,10 @@ public class MyHashMap<K, V> {
         newNode.next = buckets[bi];
         buckets[bi] = newNode;
         size++;
+        double lambda= (double)size/buckets.length;
+        if(lambda>2.0){
+            rehash();
+        }
     }
     public V get(K key){
         int bi= getBucketIndex(key);
@@ -77,5 +81,18 @@ public class MyHashMap<K, V> {
     }
     public int size(){
         return this.size;
+    }
+    private void rehash(){
+        Node<K,V>[] oldBuckets= buckets;
+
+        buckets = new Node[oldBuckets.length*2];
+        size=0;
+        for(int i=0;i<oldBuckets.length;i++){
+            Node<K,V> head= oldBuckets[i];
+            while(head!=null){
+                put(head.key,head.value);
+                head=head.next;
+            }
+        }
     }
 }

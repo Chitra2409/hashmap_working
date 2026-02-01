@@ -43,5 +43,16 @@ public class Main {
         System.out.println("Removing 'Ghost': " + ghost + " (Expected: null)");
         
         System.out.println("Current Size: " + map.size()); 
+
+        // Test 6: Rehash / Resizing
+        System.out.println("\n--- Testing Resizing (Rehash) ---");
+        System.out.println("Adding 10 items to force a resize...");
+        for (int i = 1; i <= 10; i++) {
+            map.put("Key" + i, i * 100);
+        }
+        System.out.println("New Size: " + map.size());
+        System.out.println("Get 'Key5': " + map.get("Key5") + " (Expected: 500)");
+        System.out.println("Get 'Key10': " + map.get("Key10") + " (Expected: 1000)");
+        System.out.println("Get 'Apple': " + map.get("Apple") + " (Expected: 15) - Checking old data still exists");
     }
 }
