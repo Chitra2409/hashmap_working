@@ -54,4 +54,28 @@ public class MyHashMap<K, V> {
         }
         return null;
     }
+    public V remove(K key){
+        int bi= getBucketIndex(key);
+        Node<K,V> current = buckets[bi];
+        Node<K,V> prev = null;
+
+        while(current !=null){
+            if(current.key.equals(key)){
+                if(prev ==null){
+                    buckets[bi]= current.next;
+                }
+                else{
+                    prev.next=current.next;
+                }
+                size--;
+                return current.value;
+            }
+            prev=current;
+            current = current.next;
+        }
+        return null;
+    }
+    public int size(){
+        return this.size;
+    }
 }
