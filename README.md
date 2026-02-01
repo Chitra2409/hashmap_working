@@ -26,5 +26,5 @@ A simple implementation of a HashMap built from scratch to understand the intern
 
 ## Roadmap
 - [x] Basic `put` and `get`
-- [ ] `remove(K key)` implementation
-- [ ] Dynamic resizing (`rehash`)
+- [x] `remove(K key)` implementation
+- [x] Dynamic resizing (`rehash`)
